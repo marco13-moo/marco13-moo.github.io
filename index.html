@@ -145,20 +145,29 @@
         <div onclick="closecontact()"><i class="fas fa-angle-down"></i></div>
         <h1>contact.</h1>
         <section>
-            <h2>contact me</h2>
-            <p>
-            <form action="https://formcarry.com/s/vtykv0ubAH4" method="POST" class="formcarry-form">
-                <input name="name" type="text" placeholder="name" required />
-                <input name="email" type="email" placeholder="email" required /><br>
-                <textarea name="message" placeholder="your message" required rows="5"></textarea><br>
-                <button class="btn_one">send</button>
-            </form>
-            </p>
+          <h2>contact me</h2>
+          <form
+            action="https://formcarry.com/s/vtykv0ubAH4"
+            method="POST"
+            enctype="multipart/form-data"
+            class="formcarry-form"
+          >
+            <label>
+              Your email:
+              <input type="email" name="email" placeholder="email" required />
+            </label>
+            <label>
+              Your message:
+              <textarea name="message" placeholder="your message" required rows="5"></textarea>
+            </label>
+            <button type="submit" class="btn_one">send</button>
+          </form>
         </section>
-    </div>
+      </div>
     <script src="index.js" type="text/javascript"></script>
     <script src="particles.js"></script>
     <script src="app.js"></script>
 </body>
 
 </html>
+  
