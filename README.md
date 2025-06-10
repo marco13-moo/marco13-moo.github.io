@@ -2,7 +2,7 @@
 
 > A clean, beautiful, ambient portfolio template for Software Developers!
 
-> https://thekaushikgoswami.github.io
+> REF: https://thekaushikgoswami.github.io
 
 ![GitHub stars](https://img.shields.io/github/stars/TheKaushikGoswami/thekaushikgoswami.github.io?style=for-the-badge) 
 ![GitHub forks](https://img.shields.io/github/forks/TheKaushikGoswami/thekaushikgoswami.github.io?style=for-the-badge)
@@ -81,5 +81,3 @@ After cloning & setting up the local project you can push the changes to your gi
 - [tsParticles](https://github.com/tsparticles/404-templates) - For The Custom 404 Page
 
 ------
-
-Made with :heart: in India
