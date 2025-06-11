@@ -3,7 +3,7 @@ body {
   font-family: 'Poppins', sans-serif;
   color: white;
   background: #000;
-  background-image: url('background.jpg'); /* replace with your background */
+  background-image: url('background.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
@@ -22,6 +22,7 @@ body {
 h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  text-align: center; /* Ensures all h1 headings are centered */
 }
 
 p {
@@ -37,4 +38,65 @@ p {
 .section.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+#contact_container {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  padding: 4rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.formcarry-container {
+  width: 100%;
+}
+
+.formcarry-block {
+  margin-bottom: 1.5rem;
+}
+
+.formcarry-block label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.formcarry-block input,
+.formcarry-block textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+
+.formcarry-block input::placeholder,
+.formcarry-block textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.formcarry-block textarea {
+  height: 120px;
+  resize: none;
+}
+
+.formcarry-block button {
+  background: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.formcarry-block button:hover {
+  background: #0056b3;
 }

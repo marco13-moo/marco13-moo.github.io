@@ -31,10 +31,33 @@
   </section>
 
   <section id="contact_container" class="container section hidden">
-    <h1>Contact</h1>
-    <p>Let’s get in touch!</p>
+        <div onclick="closecontact()"><i class="fas fa-angle-down"></i></div>
+        <h1>contact.</h1>
+        <section class="formcarry-container">
+            <form action="https://formcarry.com/s/vtykv0ubAH4" method="POST" enctype="multipart/form-data">
+                <div class="formcarry-block">
+                    <label for="fc-generated-1-name">Full Name</label>
+                    <input type="text" name="name" id="fc-generated-1-name" placeholder="Your first and last name" />
+                </div>
+    
+                <div class="formcarry-block">
+                    <label for="fc-generated-1-email">Your Email Address</label>
+                    <input type="email" name="email" id="fc-generated-1-email" placeholder="john@doe.com" />
+                </div>
+    
+                <div class="formcarry-block">
+                    <label for="fc-generated-1-message">Your message</label>
+                    <textarea name="message" id="fc-generated-1-message" placeholder="Enter your message..."></textarea>
+                </div>
+    
+                <div class="formcarry-block">
+                    <button type="submit">Send</button>
+                </div>
+            </form>
+        </section>
   </section>
 
   <script src="index.js"></script>
+  <script src="particles.js"></script>
 </body>
 </html>
