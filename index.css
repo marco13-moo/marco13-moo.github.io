@@ -22,7 +22,6 @@ body {
 h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  text-align: center; /* Ensures all h1 headings are centered */
 }
 
 p {
@@ -48,6 +47,10 @@ p {
   margin: 2rem auto;
   max-width: 900px;
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#contact_container h1 {
+  text-align: left; /* Aligns the contact heading to the left */
 }
 
 .formcarry-container {
