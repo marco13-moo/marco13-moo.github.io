@@ -16,7 +16,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+html, body { min-height: 100%; }  /* allow page to grow naturally */
 
 body {
   margin: 0;
@@ -26,12 +26,13 @@ body {
   background-attachment: fixed;
   overflow-x: hidden;
   line-height: 1.6;
+  padding-bottom: var(--sp-6);   /* guaranteed bottom breathing room */
 }
 
 #particles-js{
   position: fixed; inset: 0;
   z-index: 0;
-  opacity: .15;            /* tone particles way down */
+  opacity: .15;                  /* tone particles way down */
   pointer-events: none;
 }
 
@@ -44,7 +45,9 @@ body {
   padding: var(--sp-6) var(--sp-4);
 }
 
-.section {
+/* Sections (apply the same look to #contact_container even if it lacks .section) */
+.section,
+#contact_container {
   margin: var(--sp-6) auto;
   padding: var(--sp-5);
   background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
@@ -56,12 +59,13 @@ body {
   transform: translateY(28px);
   transition: opacity .6s ease, transform .6s ease;
 }
-.section.visible { opacity: 1; transform: translateY(0); }
+
+.section.visible,
+#contact_container.visible { opacity: 1; transform: translateY(0); }
 
 /* Ensure equal bottom breathing room for the final block */
-.section:last-of-type {
-  margin-bottom: var(--sp-6);
-}
+.section:last-of-type,
+#contact_container:last-of-type { margin-bottom: var(--sp-6); }
 
 /* Type scale */
 h1, h2, h3 { line-height: 1.2; margin: 0 0 var(--sp-3); }
@@ -84,11 +88,7 @@ li + li { margin-top: .4rem; }
 .project h3 { margin-bottom: .25rem; }
 .project p { margin-top: 0; }
 
-/* Contact */
-#contact_container {
-  background: var(--bg-elev);
-  border: 1px solid rgba(255,255,255,.08);
-}
+/* Contact form elements (visuals match the section chrome) */
 .formcarry-container { width: 100%; }
 .formcarry-block { margin-bottom: var(--sp-3); }
 .formcarry-block label {
@@ -125,17 +125,5 @@ li + li { margin-top: .4rem; }
 /* Responsive padding tightening */
 @media (max-width: 720px){
   .container { padding: var(--sp-5) var(--sp-3); }
-  .section { padding: var(--sp-4); }
-}
-
-/* Guarantee bottom space even if the last block isn't .section or margins collapse */
-body::after {
-  content: "";
-  display: block;
-  height: var(--sp-6);
-}
-
-/* Keep the explicit rule in case the last element IS a .section */
-.section:last-of-type {
-  margin-bottom: var(--sp-6);
+  .section, #contact_container { padding: var(--sp-4); }
 }
