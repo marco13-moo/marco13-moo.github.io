@@ -58,6 +58,11 @@ body {
 }
 .section.visible { opacity: 1; transform: translateY(0); }
 
+/* Ensure equal bottom breathing room for the final block */
+.section:last-of-type {
+  margin-bottom: var(--sp-6);
+}
+
 /* Type scale */
 h1, h2, h3 { line-height: 1.2; margin: 0 0 var(--sp-3); }
 h1 { font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing:.2px; }
@@ -121,4 +126,16 @@ li + li { margin-top: .4rem; }
 @media (max-width: 720px){
   .container { padding: var(--sp-5) var(--sp-3); }
   .section { padding: var(--sp-4); }
+}
+
+/* Guarantee bottom space even if the last block isn't .section or margins collapse */
+body::after {
+  content: "";
+  display: block;
+  height: var(--sp-6);
+}
+
+/* Keep the explicit rule in case the last element IS a .section */
+.section:last-of-type {
+  margin-bottom: var(--sp-6);
 }
