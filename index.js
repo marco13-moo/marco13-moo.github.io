@@ -22,19 +22,22 @@ if (!reducedMotion) {
 const menuButton = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector(".mobile-menu");
 
-menuButton.addEventListener("click", () => {
-  const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-  menuButton.setAttribute("aria-expanded", String(!isOpen));
-  mobileMenu.hidden = isOpen;
-  mobileMenu.classList.toggle("open", !isOpen);
-});
-
-mobileMenu.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    menuButton.setAttribute("aria-expanded", "false");
-    mobileMenu.hidden = true;
-    mobileMenu.classList.remove("open");
+if (menuButton && mobileMenu) {
+  menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    mobileMenu.hidden = isOpen;
+    mobileMenu.classList.toggle("open", !isOpen);
   });
-});
 
-document.querySelector("#year").textContent = new Date().getFullYear();
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuButton.setAttribute("aria-expanded", "false");
+      mobileMenu.hidden = true;
+      mobileMenu.classList.remove("open");
+    });
+  });
+}
+
+const year = document.querySelector("#year");
+if (year) year.textContent = new Date().getFullYear();
