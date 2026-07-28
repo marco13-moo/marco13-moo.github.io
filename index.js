@@ -15,14 +15,6 @@ if (!reducedMotion) {
 
   document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
-  window.addEventListener(
-    "pointermove",
-    (event) => {
-      document.documentElement.style.setProperty("--mouse-x", `${event.clientX}px`);
-      document.documentElement.style.setProperty("--mouse-y", `${event.clientY}px`);
-    },
-    { passive: true }
-  );
 } else {
   document.querySelectorAll(".reveal").forEach((element) => element.classList.add("visible"));
 }
