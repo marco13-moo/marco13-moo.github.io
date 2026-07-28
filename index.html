@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Marco Moo is a Cloud Platform Engineer building reliable cloud infrastructure, delivery platforms and automation.">
-  <meta name="theme-color" content="#080a0f">
+  <meta name="theme-color" content="#000000">
   <meta property="og:title" content="Marco Moo — Cloud Platform Engineer">
   <meta property="og:description" content="Cloud infrastructure, delivery platforms, automation and DevSecOps.">
   <meta property="og:type" content="website">
@@ -135,18 +135,43 @@
         <header class="section-heading light reveal">
           <p class="eyebrow">02 / Live GitHub signal</p>
           <h2>The work is<br>the proof.</h2>
-          <p>Live data from my GitHub profile—activity and output, updated independently of this site.</p>
+          <p>Current engineering activity, derived from my public GitHub metrics and refreshed directly from the source.</p>
         </header>
-        <div class="signal-grid">
-          <a class="metric-card reveal" href="https://github.com/marco13-moo" target="_blank" rel="noopener noreferrer">
-            <div><span>Profile metrics</span><span>Live source ↗</span></div>
-            <img src="https://raw.githubusercontent.com/marco13-moo/github-metrics/main/metrics.svg" alt="Marco Moo's live GitHub profile metrics" loading="lazy">
-          </a>
-          <a class="metric-card reveal" href="https://github.com/marco13-moo" target="_blank" rel="noopener noreferrer">
-            <div><span>Recent contributions</span><span>Last 31 days ↗</span></div>
-            <img src="https://github-readme-activity-graph.vercel.app/graph?username=marco13-moo&theme=react-dark&hide_border=true&bg_color=151812&color=C8CBBF&line=D7F25A&point=FF6A3D" alt="Marco Moo's recent GitHub activity graph" loading="lazy">
-          </a>
+        <div class="metrics-console reveal" data-metrics-source="https://raw.githubusercontent.com/marco13-moo/github-metrics/main/metrics.svg">
+          <div class="console-bar">
+            <div><i></i><span>github / marco13-moo</span></div>
+            <p><span class="live-dot"></span><span id="metrics-status">Live metrics</span></p>
+          </div>
+          <div class="metrics-grid">
+            <article class="metric metric-featured">
+              <span class="metric-label">Current commit streak</span>
+              <strong id="metric-streak">184</strong>
+              <small>days · personal best</small>
+              <div class="streak-visual" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </article>
+            <article class="metric"><span class="metric-label">Contributed to</span><strong id="metric-repositories">15</strong><small>public repositories</small></article>
+            <article class="metric"><span class="metric-label">Highest output</span><strong id="metric-highest">18</strong><small>commits in one day</small></article>
+            <article class="metric"><span class="metric-label">Daily average</span><strong id="metric-average">7.07</strong><small>commits per day</small></article>
+            <article class="metric language-metric">
+              <div class="language-heading"><span class="metric-label">Language distribution</span><small><strong id="metric-languages">9</strong> languages</small></div>
+              <div class="language-bar" aria-label="Primary language distribution">
+                <i style="--share:31.28%;--language:#b77730"></i><i style="--share:20.94%;--language:#ead84c"></i><i style="--share:20.91%;--language:#4e91ca"></i><i style="--share:16.67%;--language:#42c8e7"></i><i style="--share:5.14%;--language:#eb694c"></i><i style="--share:2.82%;--language:#8c5cc4"></i><i style="--share:2.24%;--language:#4b91db"></i>
+              </div>
+              <ul class="language-legend">
+                <li><i style="--language:#b77730"></i>Java</li><li><i style="--language:#ead84c"></i>JavaScript</li><li><i style="--language:#4e91ca"></i>Python</li><li><i style="--language:#42c8e7"></i>Go</li><li><i style="--language:#eb694c"></i>HTML</li><li><i style="--language:#8c5cc4"></i>CSS</li><li><i style="--language:#4b91db"></i>TypeScript</li>
+              </ul>
+            </article>
+          </div>
+          <a class="console-link" href="https://github.com/marco13-moo" target="_blank" rel="noopener noreferrer"><span>View the complete contribution record</span><span>GitHub ↗</span></a>
         </div>
+        <a class="activity-panel reveal" href="https://github.com/marco13-moo" target="_blank" rel="noopener noreferrer">
+          <div><span>Recent contribution velocity</span><span>Last 31 days ↗</span></div>
+          <img src="https://github-readme-activity-graph.vercel.app/graph?username=marco13-moo&theme=react-dark&hide_border=true&bg_color=000000&color=959D9B&line=C9F46D&point=65D9D3" alt="Marco Moo's recent GitHub activity graph" loading="lazy">
+        </a>
       </div>
     </section>
 
