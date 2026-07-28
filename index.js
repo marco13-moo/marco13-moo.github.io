@@ -41,3 +41,14 @@ if (menuButton && mobileMenu) {
 
 const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
+
+if (!reducedMotion && window.matchMedia("(pointer: fine)").matches) {
+  let frame;
+  window.addEventListener("pointermove", (event) => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      document.documentElement.style.setProperty("--pointer-x", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--pointer-y", `${event.clientY}px`);
+    });
+  }, { passive: true });
+}
