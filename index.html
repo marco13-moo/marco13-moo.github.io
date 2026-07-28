@@ -3,241 +3,207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Marco Moo is a Platform Engineer building secure cloud systems, delivery platforms, and operational confidence.">
-  <meta name="theme-color" content="#0b0c0c">
-  <meta property="og:title" content="Marco Moo — Platform Engineer">
-  <meta property="og:description" content="Cloud systems. Delivery platforms. Operational confidence.">
+  <meta name="description" content="Marco Moo is a Cloud Platform Engineer working across cloud infrastructure, CI/CD, automation, containers, security and observability.">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta property="og:title" content="Marco Moo — Cloud Platform Engineer">
+  <meta property="og:description" content="Cloud infrastructure, delivery platforms, automation and DevSecOps.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://marco13-moo.github.io/">
-  <meta property="og:image" content="https://marco13-moo.github.io/assets/og-platform-engineer.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Marco Moo — Platform Engineer">
-  <meta name="twitter:description" content="Cloud systems. Delivery platforms. Operational confidence.">
-  <meta name="twitter:image" content="https://marco13-moo.github.io/assets/og-platform-engineer.jpg">
-  <link rel="icon" href="./assets/favicon.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-platform.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
-  <title>Marco Moo — Platform Engineer</title>
+  <title>Marco Moo — Cloud Platform Engineer</title>
 </head>
 <body>
-  <div class="ambient-grid" aria-hidden="true"></div>
-  <div class="cursor-light" aria-hidden="true"></div>
-
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Marco Moo, home">
-      <span class="brand-mark">MM</span>
-      <span class="brand-copy">Marco Moo<small>Platform Engineer</small></span>
+      <span class="brand-mark">M</span>
+      <span>Marco Moo<small>Cloud Platform Engineer</small></span>
     </a>
     <nav aria-label="Primary navigation">
-      <a href="#work">Work</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#activity">Activity</a>
-      <a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
+      <a href="#stats">GitHub stats</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a class="nav-contact" href="#contact">Contact</a>
     </nav>
     <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
   </header>
 
   <div id="mobile-menu" class="mobile-menu" hidden>
-    <a href="#work">Work</a>
-    <a href="#capabilities">Capabilities</a>
-    <a href="#activity">Activity</a>
-    <a href="#contact">Let's talk</a>
+    <a href="#stats">GitHub stats</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
   </div>
 
   <main id="top">
-    <section class="hero section-shell">
-      <div class="hero-copy reveal">
-        <p class="eyebrow"><span class="status-dot"></span> Open to ambitious platform teams</p>
-        <h1>I build the systems<br>that let teams <em>ship.</em></h1>
-        <p class="hero-lede">Cloud Platform Engineer with 4+ years turning complex infrastructure into secure, observable and repeatable delivery platforms.</p>
+    <section class="hero page-width">
+      <div class="hero-main reveal">
+        <p class="role-line"><span></span> Platform engineering · DevOps · Multi-cloud</p>
+        <h1>I build cloud platforms that help teams ship <em>securely</em> and reliably.</h1>
+        <p class="hero-summary">Cloud Platform Engineer with over four years of experience improving infrastructure, CI/CD pipelines and operational workflows through automation, containerisation and observability.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#work">Explore selected work <span>↓</span></a>
-          <a class="button button-quiet" href="mailto:marcomoo13@proton.me">marcomoo13@proton.me <span>↗</span></a>
+          <a class="button button-primary" href="#projects">View my projects <span>↓</span></a>
+          <a class="button button-secondary" href="mailto:marcomoo13@proton.me">Email me <span>↗</span></a>
         </div>
       </div>
 
-      <div class="control-plane reveal" aria-label="Platform engineering control plane illustration">
-        <div class="terminal-bar">
-          <span><i></i><i></i><i></i></span>
-          <code>platform/control-plane</code>
-          <b>LIVE</b>
+      <aside class="profile-card reveal" aria-label="Professional profile summary">
+        <div class="profile-card-head">
+          <span>Profile snapshot</span>
+          <i>Available for opportunities</i>
         </div>
-        <div class="control-body">
-          <div class="deployment-line">
-            <div class="node node-source"><span>01</span><strong>Source</strong><small>commit verified</small></div>
-            <div class="route"><i></i></div>
-            <div class="node node-build"><span>02</span><strong>Build</strong><small>policy passed</small></div>
-            <div class="route"><i></i></div>
-            <div class="node node-ship"><span>03</span><strong>Ship</strong><small>healthy</small></div>
-          </div>
-          <div class="telemetry">
-            <div><span>availability</span><strong>99.99<small>%</small></strong><i class="spark spark-one"></i></div>
-            <div><span>lead time</span><strong>−42<small>%</small></strong><i class="spark spark-two"></i></div>
-            <div><span>deployments</span><strong>07<small>/day</small></strong><i class="spark spark-three"></i></div>
-          </div>
-          <div class="console">
-            <p><span>08:42:17</span> artifact signed and promoted</p>
-            <p><span>08:42:21</span> policy checks passed <b>[14/14]</b></p>
-            <p><span>08:42:27</span> production rollout healthy <i>●</i></p>
-          </div>
+        <div class="experience">
+          <strong>4+</strong>
+          <span>years working across cloud infrastructure and delivery systems</span>
         </div>
-      </div>
-
-      <div class="hero-rail reveal" aria-label="Core disciplines">
-        <span>01 / CLOUD</span>
-        <span>02 / DELIVERY</span>
-        <span>03 / SECURITY</span>
-        <span>04 / OBSERVABILITY</span>
-      </div>
-    </section>
-
-    <section class="manifesto section-shell reveal" aria-labelledby="manifesto-title">
-      <p class="section-index">01 — APPROACH</p>
-      <div>
-        <h2 id="manifesto-title">Platform engineering is a product discipline.</h2>
-        <p>I design infrastructure that developers trust: paved roads over ticket queues, guardrails over gates, and feedback loops that make reliability visible. The result is a platform that feels less like infrastructure—and more like leverage.</p>
-      </div>
-      <aside>
-        <span>Based in Europe</span>
-        <strong>Multi-cloud by design</strong>
-        <span>AWS · Azure · IBM Cloud</span>
+        <dl>
+          <div><dt>Cloud</dt><dd>AWS, Azure, IBM Cloud</dd></div>
+          <div><dt>Platforms</dt><dd>Kubernetes, Docker, RHOV</dd></div>
+          <div><dt>Automation</dt><dd>Python, Bash, Ansible, Go</dd></div>
+          <div><dt>Location</dt><dd>Europe</dd></div>
+        </dl>
+        <div class="profile-certifications">
+          <p>Certifications</p>
+          <span>AWS Solutions Architect — Associate</span>
+          <span>Azure DevOps Engineer — Expert</span>
+        </div>
       </aside>
     </section>
 
-    <section id="work" class="projects section-shell">
-      <div class="section-heading reveal">
-        <p class="section-index">02 — SELECTED WORK</p>
-        <h2>Systems built to<br>do real work.</h2>
-        <p>Automation, security and delivery projects that show how I think: reduce friction, expose the right signals, and make the safe path the fast path.</p>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card project-featured reveal">
-          <div class="project-number">01</div>
-          <div class="project-status"><span></span> Production system</div>
-          <div class="project-copy">
-            <p class="project-kicker">Analytics · GitHub Actions · Observability</p>
-            <h3>GitHub Metrics<br>Dashboard</h3>
-            <p>Self-hosted analytics across commits, pull requests, repositories, CI/CD pipelines, languages and contribution trends.</p>
-            <ul>
-              <li>Daily automated reporting</li>
-              <li>Cross-repository visibility</li>
-              <li>Delivery trend intelligence</li>
-            </ul>
-            <a href="https://github.com/marco13-moo/github-dashboard" target="_blank" rel="noopener noreferrer">View repository <span>↗</span></a>
+    <section id="stats" class="stats-section section-block">
+      <div class="page-width">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label">GitHub activity</p>
+            <h2>Proof, not placeholders.</h2>
           </div>
-          <div class="project-visual metrics-visual" aria-hidden="true">
-            <div class="visual-head"><span>delivery_overview</span><b>LIVE</b></div>
-            <div class="bar-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-            <div class="visual-stat"><span>pipeline health</span><strong>98.7%</strong></div>
-          </div>
-        </article>
+          <p>Live data from my GitHub profile—repositories, contribution history, languages and ongoing activity.</p>
+        </div>
 
-        <article class="project-card reveal">
-          <div class="project-number">02</div>
-          <div class="project-copy">
-            <p class="project-kicker">DevSecOps · Automation · Alerting</p>
-            <h3>Vulnerability<br>Automation</h3>
-            <p>Automated scanning across repositories and infrastructure with real-time Slack alerts and GitHub Actions orchestration.</p>
-            <a href="https://github.com/marco13-moo/devsecops-vulnerability-automation" target="_blank" rel="noopener noreferrer">View repository <span>↗</span></a>
-          </div>
-          <div class="shield-metric" aria-hidden="true">
-            <span>RISK SURFACE</span>
-            <strong>−68%</strong>
-            <div><i></i><i></i><i></i><i></i><i></i></div>
-          </div>
-        </article>
+        <div class="stats-grid">
+          <a class="stat-panel stat-panel-large reveal" href="https://github.com/marco13-moo" target="_blank" rel="noopener noreferrer">
+            <div class="panel-heading">
+              <span>GitHub metrics</span>
+              <span>View profile ↗</span>
+            </div>
+            <img src="https://raw.githubusercontent.com/marco13-moo/github-metrics/main/metrics.svg" alt="Marco Moo's live GitHub metrics" loading="eager">
+          </a>
 
-        <article class="project-card reveal">
-          <div class="project-number">03</div>
-          <div class="project-copy">
-            <p class="project-kicker">AI · Publishing · Workflow Design</p>
-            <h3>Daily Dose<br>of DevOps</h3>
-            <p>An automated technical publishing engine using Hugging Face AI, Hashnode, GitHub Actions and Vercel previews.</p>
-            <a href="https://github.com/marco13-moo/daily-dose-of-devops" target="_blank" rel="noopener noreferrer">View repository <span>↗</span></a>
-          </div>
-          <div class="content-stream" aria-hidden="true">
-            <span>GENERATE</span><i></i><span>VALIDATE</span><i></i><span>PUBLISH</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="capabilities" class="capabilities section-shell">
-      <div class="section-heading reveal">
-        <p class="section-index">03 — CAPABILITIES</p>
-        <h2>From first commit<br>to steady state.</h2>
-      </div>
-
-      <div class="capability-list">
-        <article class="reveal">
-          <span>01</span>
-          <h3>Cloud foundations</h3>
-          <p>Secure, scalable landing zones and network architecture across AWS, Azure and IBM Cloud.</p>
-          <div>AWS / AZURE / IBM CLOUD / VPC / IAM</div>
-        </article>
-        <article class="reveal">
-          <span>02</span>
-          <h3>Delivery platforms</h3>
-          <p>Repeatable CI/CD systems that give teams fast feedback and confidence from merge to production.</p>
-          <div>GITHUB ACTIONS / JENKINS / TRAVIS</div>
-        </article>
-        <article class="reveal">
-          <span>03</span>
-          <h3>Infrastructure as code</h3>
-          <p>Versioned, testable infrastructure that turns environments into reliable, reviewable software.</p>
-          <div>TERRAFORM / CLOUDFORMATION / ANSIBLE / CHEF</div>
-        </article>
-        <article class="reveal">
-          <span>04</span>
-          <h3>Runtime & reliability</h3>
-          <p>Container platforms and observability built around useful signals, clear ownership and fast recovery.</p>
-          <div>KUBERNETES / DOCKER / RHOV / GRAFANA / SPLUNK / NAGIOS</div>
-        </article>
-        <article class="reveal">
-          <span>05</span>
-          <h3>Automation</h3>
-          <p>Purpose-built tooling that removes repetitive operations and connects systems cleanly.</p>
-          <div>PYTHON / BASH / GO / ARTIFACTORY</div>
-        </article>
-      </div>
-
-      <div class="certifications reveal">
-        <p>Industry validated</p>
-        <div>
-          <article><span>AWS</span><strong>Solutions Architect</strong><small>Associate</small></article>
-          <article><span>AZ</span><strong>Azure DevOps Engineer</strong><small>Expert</small></article>
+          <a class="stat-panel reveal" href="https://github.com/marco13-moo" target="_blank" rel="noopener noreferrer">
+            <div class="panel-heading">
+              <span>Recent contributions</span>
+              <span>Last 31 days ↗</span>
+            </div>
+            <img src="https://github-readme-activity-graph.vercel.app/graph?username=marco13-moo&theme=minimal&hide_border=true&bg_color=ffffff&color=334155&line=2563eb&point=0f172a" alt="Marco Moo's recent GitHub contribution graph" loading="lazy">
+          </a>
         </div>
       </div>
     </section>
 
-    <section id="activity" class="activity section-shell">
+    <section id="projects" class="projects-section section-block page-width">
       <div class="section-heading reveal">
-        <p class="section-index">04 — OPEN SOURCE SIGNAL</p>
-        <h2>Building in public.</h2>
-        <p>A live view into the systems, experiments and automation I’m shipping on GitHub.</p>
+        <div>
+          <p class="section-label">Selected projects</p>
+          <h2>What I’ve built.</h2>
+        </div>
+        <p>Practical projects covering engineering analytics, DevSecOps automation and AI-assisted technical publishing.</p>
       </div>
 
-      <div class="github-panels">
-        <a class="github-panel reveal" href="https://github.com/marco13-moo" target="_blank" rel="noopener noreferrer">
-          <div class="panel-label"><span>GitHub metrics</span><i>Live feed ↗</i></div>
-          <img src="https://raw.githubusercontent.com/marco13-moo/github-metrics/main/metrics.svg" alt="Marco Moo's GitHub metrics" loading="lazy">
-        </a>
-        <a class="github-panel reveal" href="https://github.com/marco13-moo" target="_blank" rel="noopener noreferrer">
-          <div class="panel-label"><span>Recent contribution activity</span><i>Last 31 days ↗</i></div>
-          <img src="https://github-readme-activity-graph.vercel.app/graph?username=marco13-moo&theme=react-dark&hide_border=true&bg_color=111313&color=F2EEE6&line=F0A33A&point=FAF7F0" alt="Marco Moo's recent GitHub contribution graph" loading="lazy">
-        </a>
+      <div class="project-list">
+        <article class="project-card reveal">
+          <div class="project-index">01</div>
+          <div class="project-content">
+            <div class="project-tags"><span>GitHub Actions</span><span>Analytics</span><span>CI/CD</span></div>
+            <h3>GitHub Metrics Dashboard</h3>
+            <p>A self-hosted GitHub Actions dashboard that generates daily analytics across commits, pull requests, repositories, CI/CD pipelines, languages and contribution trends.</p>
+            <a href="https://github.com/marco13-moo/github-dashboard" target="_blank" rel="noopener noreferrer">Explore repository <span>↗</span></a>
+          </div>
+          <div class="project-aside">
+            <strong>Focus</strong>
+            <span>Engineering visibility</span>
+            <span>Workflow automation</span>
+            <span>Delivery analytics</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-index">02</div>
+          <div class="project-content">
+            <div class="project-tags"><span>DevSecOps</span><span>Slack</span><span>Automation</span></div>
+            <h3>DevSecOps Vulnerability Automation</h3>
+            <p>An automated DevSecOps system that scans repositories and infrastructure for vulnerabilities, sends real-time Slack alerts and uses GitHub Actions for CI/CD orchestration.</p>
+            <a href="https://github.com/marco13-moo/devsecops-vulnerability-automation" target="_blank" rel="noopener noreferrer">Explore repository <span>↗</span></a>
+          </div>
+          <div class="project-aside">
+            <strong>Focus</strong>
+            <span>Security automation</span>
+            <span>Cloud deployment</span>
+            <span>Workflow orchestration</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-index">03</div>
+          <div class="project-content">
+            <div class="project-tags"><span>AI</span><span>Hashnode</span><span>Vercel</span></div>
+            <h3>Daily Dose of DevOps</h3>
+            <p>An automated DevOps publishing system that creates technical posts with Hugging Face AI, publishes to Hashnode, rotates topics, prevents duplicates and uses Vercel for API previews.</p>
+            <a href="https://github.com/marco13-moo/daily-dose-of-devops" target="_blank" rel="noopener noreferrer">Explore repository <span>↗</span></a>
+          </div>
+          <div class="project-aside">
+            <strong>Focus</strong>
+            <span>AI workflows</span>
+            <span>Content automation</span>
+            <span>Cloud-based delivery</span>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="contact" class="contact section-shell">
-      <div class="contact-intro reveal">
-        <p class="section-index">05 — START A CONVERSATION</p>
-        <h2>Need a platform that<br>moves at your speed?</h2>
-        <p>I’m interested in teams treating infrastructure as a product, solving hard delivery problems, and building systems people actually enjoy using.</p>
-        <a href="mailto:marcomoo13@proton.me">marcomoo13@proton.me <span>↗</span></a>
+    <section id="skills" class="skills-section section-block">
+      <div class="page-width">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-label">Technical toolkit</p>
+            <h2>Skills and certifications.</h2>
+          </div>
+          <p>Technologies I use to build, automate, secure and operate modern cloud platforms.</p>
+        </div>
+
+        <div class="skill-grid">
+          <article class="skill-card reveal"><span>01</span><h3>Cloud</h3><p>AWS · Azure · IBM Cloud</p></article>
+          <article class="skill-card reveal"><span>02</span><h3>CI/CD</h3><p>GitHub Actions · Jenkins · Travis</p></article>
+          <article class="skill-card reveal"><span>03</span><h3>Infrastructure as Code</h3><p>Terraform · CloudFormation · Ansible · Chef</p></article>
+          <article class="skill-card reveal"><span>04</span><h3>Containers</h3><p>Kubernetes · Docker · RHOV</p></article>
+          <article class="skill-card reveal"><span>05</span><h3>Observability</h3><p>Grafana · Nagios · Splunk</p></article>
+          <article class="skill-card reveal"><span>06</span><h3>Automation</h3><p>Python · Bash · Go</p></article>
+          <article class="skill-card reveal"><span>07</span><h3>Networking & access</h3><p>VPCs · Firewalls · IAM</p></article>
+          <article class="skill-card reveal"><span>08</span><h3>Artifact management</h3><p>Artifactory</p></article>
+        </div>
+
+        <div class="cert-grid">
+          <article class="cert-card reveal">
+            <span>AWS</span>
+            <div><small>Certification</small><h3>Solutions Architect</h3><p>Associate</p></div>
+          </article>
+          <article class="cert-card reveal">
+            <span>AZ</span>
+            <div><small>Certification</small><h3>Azure DevOps Engineer</h3><p>Expert</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section section-block page-width">
+      <div class="contact-copy reveal">
+        <p class="section-label">Contact</p>
+        <h2>Let’s talk about your platform team.</h2>
+        <p>If you’re hiring for cloud platform, DevOps or infrastructure engineering work, I’d be glad to hear what your team is building.</p>
+        <a class="email-link" href="mailto:marcomoo13@proton.me">marcomoo13@proton.me <span>↗</span></a>
         <div class="social-links" aria-label="Social profiles">
           <a href="https://github.com/marco13-moo/" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href="https://hashnode.com/@marcomoo13" target="_blank" rel="noreferrer">Hashnode ↗</a>
@@ -247,21 +213,21 @@
       </div>
 
       <form class="contact-form reveal" action="https://formcarry.com/s/vtykv0ubAH4" method="POST" enctype="multipart/form-data">
-        <div class="form-heading"><span>New opportunity</span><i>● AVAILABLE</i></div>
+        <h3>Send a message</h3>
         <label for="name">Your name</label>
         <input type="text" name="name" id="name" placeholder="Jane Smith" required>
-        <label for="email">Work email</label>
+        <label for="email">Your email</label>
         <input type="email" name="email" id="email" placeholder="jane@company.com" required>
-        <label for="message">What are you building?</label>
-        <textarea name="message" id="message" placeholder="Tell me about the team, the platform and the challenge..." required></textarea>
+        <label for="message">Message</label>
+        <textarea name="message" id="message" placeholder="Tell me about the role or project..." required></textarea>
         <button type="submit">Send message <span>↗</span></button>
       </form>
     </section>
   </main>
 
-  <footer class="site-footer section-shell">
-    <div><span class="status-dot"></span> Systems healthy</div>
+  <footer class="site-footer page-width">
     <p>© <span id="year"></span> Marco Moo</p>
+    <p>Cloud Platform Engineer</p>
     <a href="#top">Back to top ↑</a>
   </footer>
 
