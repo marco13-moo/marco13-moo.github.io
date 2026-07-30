@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" role="img" aria-labelledby="title description">
+  <title id="title">Cached GitHub contribution streak</title>
+  <desc id="description">The latest stored snapshot shows a 407 day current contribution streak.</desc>
+  <rect width="1000" height="360" rx="18" fill="#151812"/>
+  <text x="64" y="72" fill="#9da194" font-family="monospace" font-size="18">CONTRIBUTION STREAK · CACHED SNAPSHOT</text>
+  <text x="64" y="202" fill="#65d9d3" font-family="system-ui,sans-serif" font-size="112" font-weight="700">407</text>
+  <text x="294" y="194" fill="#c8cbbf" font-family="system-ui,sans-serif" font-size="32">days</text>
+  <path d="M700 230c45-80 102-80 147 0" fill="none" stroke="#ff6a3d" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="774" cy="158" r="62" fill="none" stroke="#d7f25a" stroke-width="14"/>
+  <path d="m810 114 35-36m-9 0h9v9" fill="none" stroke="#d7f25a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="64" y="292" fill="#9da194" font-family="monospace" font-size="17">LIVE SERVICE UNAVAILABLE · LAST KNOWN VALUES</text>
+</svg>
