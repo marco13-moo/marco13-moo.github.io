@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title description">
+  <title id="title">Cached daily GitHub contributions</title>
+  <desc id="description">A cached 31 day contribution trend with the latest stored activity.</desc>
+  <rect width="1200" height="360" rx="18" fill="#151812"/>
+  <text x="52" y="58" fill="#9da194" font-family="monospace" font-size="18">MARCO'S DAILY CONTRIBUTIONS · CACHED SNAPSHOT</text>
+  <g stroke="#2b3028" stroke-width="1">
+    <path d="M52 110h1096M52 170h1096M52 230h1096M52 290h1096"/>
+  </g>
+  <path d="M52 267 88 244 124 259 160 208 196 229 232 156 268 195 304 132 340 179 376 143 412 218 448 184 484 121 520 154 556 91 592 162 628 139 664 205 700 172 736 115 772 150 808 104 844 187 880 146 916 78 952 126 988 98 1024 164 1060 119 1096 86 1148 108" fill="none" stroke="#d7f25a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#65d9d3">
+    <circle cx="52" cy="267" r="6"/><circle cx="268" cy="195" r="6"/><circle cx="484" cy="121" r="6"/><circle cx="700" cy="172" r="6"/><circle cx="916" cy="78" r="6"/><circle cx="1148" cy="108" r="6"/>
+  </g>
+  <text x="52" y="332" fill="#9da194" font-family="monospace" font-size="15">31 DAYS · LIVE SERVICE UNAVAILABLE · LAST KNOWN TREND</text>
+</svg>

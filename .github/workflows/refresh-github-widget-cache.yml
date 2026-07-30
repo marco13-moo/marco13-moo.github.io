@@ -1,0 +1,97 @@
+name: Refresh GitHub widget cache
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 5,17 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-github-widget-cache
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download and validate widget snapshots
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          refresh_svg() {
+            local url="$1"
+            local destination="$2"
+            local candidate
+            candidate="$(mktemp)"
+
+            if ! curl --fail --silent --show-error --location \
+              --retry 3 --retry-delay 5 --max-time 45 \
+              "$url" --output "$candidate"; then
+              echo "::warning::Keeping existing $destination because its provider request failed."
+              return
+            fi
+
+            if ! CANDIDATE="$candidate" python3 - <<'PY'
+          import os
+          import pathlib
+          import sys
+          import xml.etree.ElementTree as ET
+
+          candidate = pathlib.Path(os.environ["CANDIDATE"])
+          content = candidate.read_text(encoding="utf-8", errors="replace")
+          rejected_messages = (
+              "failed to retrieve",
+              "github api issue",
+              "something went wrong",
+              "rate limit",
+          )
+
+          try:
+              root = ET.fromstring(content)
+          except ET.ParseError as error:
+              print(f"Invalid SVG XML: {error}", file=sys.stderr)
+              raise SystemExit(1)
+
+          if not root.tag.endswith("svg"):
+              print("Downloaded response is not an SVG.", file=sys.stderr)
+              raise SystemExit(1)
+
+          if len(content) < 1000 or any(message in content.lower() for message in rejected_messages):
+              print("Provider returned an error or incomplete SVG.", file=sys.stderr)
+              raise SystemExit(1)
+          PY
+            then
+              echo "::warning::Keeping existing $destination because the new snapshot was invalid."
+              return
+            fi
+
+            mv "$candidate" "$destination"
+            echo "Refreshed $destination"
+          }
+
+          refresh_svg \
+            "https://streak-stats.demolab.com?user=marco13-moo&theme=dark&hide_border=true&background=151812&ring=D7F25A&fire=FF6A3D&currStreakNum=65D9D3&sideNums=C8CBBF&currStreakLabel=C8CBBF&sideLabels=9DA194&dates=9DA194" \
+            "assets/github-streak-cache.svg"
+
+          refresh_svg \
+            "https://github-readme-activity-graph.vercel.app/graph?username=marco13-moo&theme=react-dark&hide_border=true&bg_color=151812&color=959D9B&line=D7F25A&point=65D9D3&custom_title=Marco%27s%20Daily%20Contributions" \
+            "assets/github-activity-cache.svg"
+
+      - name: Commit refreshed snapshots
+        shell: bash
+        run: |
+          if git diff --quiet -- assets/github-streak-cache.svg assets/github-activity-cache.svg; then
+            echo "Cached snapshots are already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/github-streak-cache.svg assets/github-activity-cache.svg
+          git commit -m "chore: refresh GitHub widget cache"
+          git push
