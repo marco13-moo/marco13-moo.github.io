@@ -1,12 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" role="img" aria-labelledby="title description">
   <title id="title">Cached GitHub contribution streak</title>
-  <desc id="description">The latest stored snapshot shows a 407 day current contribution streak.</desc>
+  <desc id="description">The latest stored snapshot shows a 407 day contribution streak alongside a compact activity grid.</desc>
   <rect width="1000" height="360" rx="18" fill="#151812"/>
-  <text x="64" y="72" fill="#9da194" font-family="monospace" font-size="18">CONTRIBUTION STREAK · CACHED SNAPSHOT</text>
-  <text x="64" y="202" fill="#65d9d3" font-family="system-ui,sans-serif" font-size="112" font-weight="700">407</text>
-  <text x="294" y="194" fill="#c8cbbf" font-family="system-ui,sans-serif" font-size="32">days</text>
-  <path d="M700 230c45-80 102-80 147 0" fill="none" stroke="#ff6a3d" stroke-width="22" stroke-linecap="round"/>
-  <circle cx="774" cy="158" r="62" fill="none" stroke="#d7f25a" stroke-width="14"/>
-  <path d="m810 114 35-36m-9 0h9v9" fill="none" stroke="#d7f25a" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="64" y="292" fill="#9da194" font-family="monospace" font-size="17">LIVE SERVICE UNAVAILABLE · LAST KNOWN VALUES</text>
+  <text x="56" y="58" fill="#9da194" font-family="monospace" font-size="16" letter-spacing="1.5">CONTRIBUTION SNAPSHOT</text>
+  <line x1="56" y1="82" x2="944" y2="82" stroke="#2b3028"/>
+
+  <text x="56" y="199" fill="#c8cbbf" font-family="system-ui,sans-serif" font-size="98" font-weight="650">407</text>
+  <text x="56" y="238" fill="#9da194" font-family="monospace" font-size="17">DAY CURRENT STREAK</text>
+  <text x="56" y="302" fill="#777d72" font-family="monospace" font-size="14">LAST KNOWN DATA · STORED LOCALLY</text>
+
+  <g transform="translate(470 112)">
+    <text x="0" y="-12" fill="#777d72" font-family="monospace" font-size="13">RECENT ACTIVITY</text>
+    <g fill="#252a23">
+      <rect x="0" y="8" width="22" height="22" rx="4"/><rect x="30" y="8" width="22" height="22" rx="4"/><rect x="60" y="8" width="22" height="22" rx="4"/><rect x="90" y="8" width="22" height="22" rx="4"/><rect x="120" y="8" width="22" height="22" rx="4"/><rect x="150" y="8" width="22" height="22" rx="4"/><rect x="180" y="8" width="22" height="22" rx="4"/><rect x="210" y="8" width="22" height="22" rx="4"/><rect x="240" y="8" width="22" height="22" rx="4"/><rect x="270" y="8" width="22" height="22" rx="4"/><rect x="300" y="8" width="22" height="22" rx="4"/><rect x="330" y="8" width="22" height="22" rx="4"/><rect x="360" y="8" width="22" height="22" rx="4"/><rect x="390" y="8" width="22" height="22" rx="4"/>
+      <rect x="0" y="38" width="22" height="22" rx="4"/><rect x="60" y="38" width="22" height="22" rx="4"/><rect x="120" y="38" width="22" height="22" rx="4"/><rect x="180" y="38" width="22" height="22" rx="4"/><rect x="240" y="38" width="22" height="22" rx="4"/><rect x="300" y="38" width="22" height="22" rx="4"/><rect x="360" y="38" width="22" height="22" rx="4"/>
+      <rect x="30" y="68" width="22" height="22" rx="4"/><rect x="90" y="68" width="22" height="22" rx="4"/><rect x="150" y="68" width="22" height="22" rx="4"/><rect x="210" y="68" width="22" height="22" rx="4"/><rect x="270" y="68" width="22" height="22" rx="4"/><rect x="330" y="68" width="22" height="22" rx="4"/><rect x="390" y="68" width="22" height="22" rx="4"/>
+      <rect x="0" y="98" width="22" height="22" rx="4"/><rect x="60" y="98" width="22" height="22" rx="4"/><rect x="120" y="98" width="22" height="22" rx="4"/><rect x="180" y="98" width="22" height="22" rx="4"/><rect x="240" y="98" width="22" height="22" rx="4"/><rect x="300" y="98" width="22" height="22" rx="4"/><rect x="360" y="98" width="22" height="22" rx="4"/>
+      <rect x="30" y="128" width="22" height="22" rx="4"/><rect x="90" y="128" width="22" height="22" rx="4"/><rect x="150" y="128" width="22" height="22" rx="4"/><rect x="210" y="128" width="22" height="22" rx="4"/><rect x="270" y="128" width="22" height="22" rx="4"/><rect x="330" y="128" width="22" height="22" rx="4"/><rect x="390" y="128" width="22" height="22" rx="4"/>
+    </g>
+    <g fill="#52602d">
+      <rect x="30" y="38" width="22" height="22" rx="4"/><rect x="90" y="38" width="22" height="22" rx="4"/><rect x="150" y="38" width="22" height="22" rx="4"/><rect x="210" y="38" width="22" height="22" rx="4"/><rect x="270" y="38" width="22" height="22" rx="4"/><rect x="330" y="38" width="22" height="22" rx="4"/><rect x="390" y="38" width="22" height="22" rx="4"/>
+      <rect x="0" y="68" width="22" height="22" rx="4"/><rect x="60" y="68" width="22" height="22" rx="4"/><rect x="120" y="68" width="22" height="22" rx="4"/><rect x="180" y="68" width="22" height="22" rx="4"/><rect x="240" y="68" width="22" height="22" rx="4"/><rect x="300" y="68" width="22" height="22" rx="4"/><rect x="360" y="68" width="22" height="22" rx="4"/>
+      <rect x="30" y="98" width="22" height="22" rx="4"/><rect x="90" y="98" width="22" height="22" rx="4"/><rect x="150" y="98" width="22" height="22" rx="4"/><rect x="210" y="98" width="22" height="22" rx="4"/><rect x="270" y="98" width="22" height="22" rx="4"/><rect x="330" y="98" width="22" height="22" rx="4"/><rect x="390" y="98" width="22" height="22" rx="4"/>
+    </g>
+    <g fill="#82933e">
+      <rect x="60" y="38" width="22" height="22" rx="4"/><rect x="180" y="38" width="22" height="22" rx="4"/><rect x="300" y="38" width="22" height="22" rx="4"/>
+      <rect x="30" y="68" width="22" height="22" rx="4"/><rect x="150" y="68" width="22" height="22" rx="4"/><rect x="270" y="68" width="22" height="22" rx="4"/><rect x="390" y="68" width="22" height="22" rx="4"/>
+      <rect x="90" y="128" width="22" height="22" rx="4"/><rect x="210" y="128" width="22" height="22" rx="4"/><rect x="330" y="128" width="22" height="22" rx="4"/>
+    </g>
+  </g>
 </svg>
