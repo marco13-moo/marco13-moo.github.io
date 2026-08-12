@@ -8,6 +8,8 @@ if (waveCanvas) {
   let waveWidth = 0;
   let waveHeight = 0;
   let waveRatio = 1;
+  let waveScroll = window.scrollY;
+  let waveScrollTarget = window.scrollY;
 
   const resizeWaveGrid = () => {
     waveRatio = Math.min(window.devicePixelRatio || 1, 2);
@@ -19,27 +21,39 @@ if (waveCanvas) {
   };
 
   const drawWaveGrid = (time = 0) => {
-    const spacing = waveWidth < 700 ? 54 : 68;
-    const columns = Math.ceil(waveWidth / spacing) + 3;
-    const rows = Math.ceil(waveHeight / spacing) + 4;
+    const spacing = waveWidth < 700 ? 48 : 58;
+    const columns = Math.ceil(waveWidth / spacing) + 8;
+    const rows = Math.ceil(waveHeight / spacing) + 10;
     const phase = reducedMotion ? 0 : time * .00016;
+    waveScroll += (waveScrollTarget - waveScroll) * (reducedMotion ? 1 : .055);
+    const scrollPhase = waveScroll * .00135;
+    const centreX = waveWidth * .5;
+    const centreY = waveHeight * .42;
     const points = Array.from({ length: rows }, (_, row) =>
       Array.from({ length: columns }, (_, column) => {
-        const baseX = (column - 1) * spacing;
-        const baseY = (row - 1) * spacing;
-        const waveA = Math.sin(column * .54 + row * .32 + phase * 4.2);
-        const waveB = Math.cos(column * .25 - row * .48 - phase * 3.1);
-        const depth = Math.sin((baseX / Math.max(waveWidth, 1)) * Math.PI * 2 + phase * 2.4);
+        const baseX = (column - 4) * spacing;
+        const baseY = (row - 4) * spacing;
+        const nx = baseX / Math.max(waveWidth, 1);
+        const ny = baseY / Math.max(waveHeight, 1);
+        const ridgeOne = Math.exp(-(((nx - .24 - Math.sin(scrollPhase) * .12) ** 2) / .026 + ((ny - .27) ** 2) / .09));
+        const ridgeTwo = Math.exp(-(((nx - .76) ** 2) / .055 + ((ny - .72 + Math.cos(scrollPhase * .8) * .16) ** 2) / .045));
+        const valley = Math.exp(-(((nx - .53) ** 2) / .035 + ((ny - .48) ** 2) / .06));
+        const rolling = Math.sin(nx * 8.4 + ny * 3.2 + phase * 3.1 + scrollPhase) * .36
+          + Math.cos(ny * 9.2 - nx * 2.6 - phase * 2.2 - scrollPhase * .7) * .22;
+        const depth = ridgeOne * 1.35 + ridgeTwo * .95 - valley * .78 + rolling;
+        const perspective = 1 + depth * .17;
+        const skew = depth * 28;
         return {
-          x: baseX + waveB * 10,
-          y: baseY + waveA * 17 + depth * 13
+          x: centreX + (baseX - centreX) * perspective + skew,
+          y: centreY + (baseY - centreY) * perspective - depth * 54,
+          depth
         };
       })
     );
 
     waveContext.clearRect(0, 0, waveWidth, waveHeight);
-    waveContext.lineWidth = .7;
-    waveContext.strokeStyle = "rgba(220, 231, 227, .18)";
+    waveContext.lineWidth = .75;
+    waveContext.strokeStyle = "rgba(220, 231, 227, .2)";
 
     const drawLine = (linePoints) => {
       waveContext.beginPath();
@@ -50,10 +64,11 @@ if (waveCanvas) {
     points.forEach(drawLine);
     for (let column = 0; column < columns; column += 1) drawLine(points.map((row) => row[column]));
 
-    waveContext.fillStyle = "rgba(241, 247, 243, .52)";
     points.flat().forEach((point) => {
+      const prominence = Math.max(0, Math.min(1, (point.depth + .7) / 2));
+      waveContext.fillStyle = `rgba(241, 247, 243, ${.3 + prominence * .42})`;
       waveContext.beginPath();
-      waveContext.arc(point.x, point.y, 1.25, 0, Math.PI * 2);
+      waveContext.arc(point.x, point.y, .8 + prominence * 1.05, 0, Math.PI * 2);
       waveContext.fill();
     });
 
@@ -67,6 +82,7 @@ if (waveCanvas) {
 
   resizeWaveGrid();
   drawWaveGrid();
+  window.addEventListener("scroll", () => { waveScrollTarget = window.scrollY; }, { passive: true });
   window.addEventListener("resize", () => { resizeWaveGrid(); restartWaveGrid(); }, { passive: true });
   document.addEventListener("visibilitychange", () => { if (!document.hidden) restartWaveGrid(); });
 }
