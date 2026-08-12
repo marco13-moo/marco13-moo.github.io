@@ -48,16 +48,20 @@ if (waveCanvas) {
         const valley = Math.exp(-(((nx - .53) ** 2) / .035 + ((ny - .48) ** 2) / .06));
         const rolling = Math.sin(nx * 8.4 + ny * 3.2 + scrollPhase) * .36
           + Math.cos(ny * 9.2 - nx * 2.6 - scrollPhase * .7) * .22;
-        const pointerDistance = Math.hypot(nx - pointerX, ny - pointerY);
-        const pointerFalloff = Math.exp(-(pointerDistance * pointerDistance) / .032);
-        const pointerRipple = Math.cos(pointerDistance * 34 - time * .0055) * pointerFalloff * pointerStrength;
-        const disturbance = (pointerFalloff * .72 + pointerRipple * .62) * pointerStrength;
-        const depth = ridgeOne * 1.35 + ridgeTwo * .95 - valley * .78 + rolling + disturbance;
+        const pointerDx = nx - pointerX;
+        const pointerDy = ny - pointerY;
+        const pointerDistance = Math.hypot(pointerDx, pointerDy);
+        const repulseRadius = waveWidth < 700 ? .24 : .19;
+        const repulseRatio = Math.max(0, 1 - pointerDistance / repulseRadius);
+        const repulseForce = repulseRatio * repulseRatio * pointerStrength;
+        const repulseX = pointerDistance ? (pointerDx / pointerDistance) * repulseForce * 68 : 0;
+        const repulseY = pointerDistance ? (pointerDy / pointerDistance) * repulseForce * 68 : 0;
+        const depth = ridgeOne * 1.35 + ridgeTwo * .95 - valley * .78 + rolling - repulseForce * .16;
         const perspective = 1 + depth * .17;
         const skew = depth * 28;
         return {
-          x: centreX + (baseX - centreX) * perspective + skew,
-          y: centreY + (baseY - centreY) * perspective - depth * 54,
+          x: centreX + (baseX - centreX) * perspective + skew + repulseX,
+          y: centreY + (baseY - centreY) * perspective - depth * 54 + repulseY,
           depth
         };
       })
