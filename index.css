@@ -94,6 +94,7 @@ img { max-width: 100%; }
   font: 700 clamp(4.4rem, 8.5vw, 8.3rem)/.82 "Syne", sans-serif;
   letter-spacing: -.075em;
 }
+.heading-line { display: block; white-space: nowrap; }
 .hero h1 { text-shadow: 0 20px 80px rgba(0,0,0,.5); }
 .hero h1 em, .contact h2 em { color: var(--orange); font-style: normal; }
 .hero-lede { max-width: 680px; margin: 46px 0 40px; font-size: 18px; color: #b7bdbb; }
