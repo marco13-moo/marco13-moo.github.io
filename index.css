@@ -198,6 +198,9 @@ img { max-width: 100%; }
 .capability > span { color: var(--orange); font: 500 9px "DM Mono", monospace; }
 .capability h3 { margin: 65px 0 12px; font: 600 21px "Syne", sans-serif; }
 .capability p { margin: 0; color: var(--muted); font-size: 12px; }
+.tech-list { display: flex; flex-wrap: wrap; gap: 10px 16px; color: var(--muted); font-size: 12px; }
+.tech-list > span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.tech-list img { width: 14px; height: 14px; object-fit: contain; filter: grayscale(1) brightness(0) invert(1); opacity: .78; }
 .certifications { grid-column: span 2; padding: 30px; background: linear-gradient(135deg, rgba(201,244,109,.13), rgba(101,217,211,.06)); border: 1px solid rgba(201,244,109,.28); }
 .certifications > div { display: flex; justify-content: space-between; gap: 20px; padding: 16px 0; border-top: 1px solid var(--line); }
 .certifications strong { font: 600 16px "Syne", sans-serif; }
