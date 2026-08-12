@@ -178,7 +178,7 @@ img { max-width: 100%; }
 .metric small { margin-top: 12px; color: var(--muted); font: 500 9px "DM Mono", monospace; text-transform: uppercase; }
 .metric-featured { grid-row: span 2; min-height: 420px; position: relative; overflow: hidden; background: radial-gradient(circle at 50% 70%, rgba(201,244,109,.11), transparent 50%); }
 .metric-featured > strong { color: var(--acid); font-size: clamp(5rem, 10vw, 9rem); text-shadow: 0 0 60px rgba(201,244,109,.16); }
-.streak-visual { position: absolute; inset: 38px 28px auto 30px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 7px; opacity: .72; }
+.streak-visual { position: absolute; inset: 72px 28px auto 30px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 7px; opacity: .72; }
 .streak-visual span { aspect-ratio: 1; border-radius: 3px; background: rgba(201,244,109,.1); animation: cell-pulse 3.4s ease-in-out infinite; }
 .streak-visual span:nth-child(3n) { background: rgba(201,244,109,.6); animation-delay: -.8s; }
 .streak-visual span:nth-child(4n) { background: rgba(101,217,211,.42); animation-delay: -1.6s; }
