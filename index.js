@@ -16,6 +16,34 @@ if (waveCanvas) {
   let pointerTargetY = .45;
   let pointerStrength = 0;
   let pointerStrengthTarget = 0;
+  let backgroundNodes = [];
+
+  const buildNodeClusters = () => {
+    let seed = 24681357;
+    const random = () => {
+      seed = (seed * 1664525 + 1013904223) >>> 0;
+      return seed / 4294967296;
+    };
+    const clusters = waveWidth < 700
+      ? [[.18, .2, .18, .15, 16], [.78, .42, .2, .2, 18], [.3, .78, .24, .17, 18]]
+      : [[.13, .2, .16, .18, 22], [.57, .12, .2, .13, 18], [.86, .4, .14, .22, 22], [.32, .76, .22, .16, 24], [.72, .84, .18, .14, 20]];
+
+    backgroundNodes = clusters.flatMap(([cx, cy, spreadX, spreadY, count], cluster) =>
+      Array.from({ length: count }, () => {
+        const angle = random() * Math.PI * 2;
+        const radius = Math.sqrt(random());
+        return {
+          cluster,
+          x: cx + Math.cos(angle) * radius * spreadX,
+          y: cy + Math.sin(angle) * radius * spreadY,
+          phase: random() * Math.PI * 2,
+          drift: .55 + random() * .8,
+          radius: .75 + random() * 1.15,
+          opacity: .25 + random() * .48
+        };
+      })
+    );
+  };
 
   const resizeWaveGrid = () => {
     waveRatio = Math.min(window.devicePixelRatio || 1, 2);
@@ -24,67 +52,53 @@ if (waveCanvas) {
     waveCanvas.width = Math.round(waveWidth * waveRatio);
     waveCanvas.height = Math.round(waveHeight * waveRatio);
     waveContext.setTransform(waveRatio, 0, 0, waveRatio, 0, 0);
+    buildNodeClusters();
   };
 
   const drawWaveGrid = (time = 0) => {
-    const spacing = waveWidth < 700 ? 48 : 58;
-    const columns = Math.ceil(waveWidth / spacing) + 8;
-    const rows = Math.ceil(waveHeight / spacing) + 10;
     waveScroll += (waveScrollTarget - waveScroll) * (reducedMotion ? 1 : .055);
     pointerX += (pointerTargetX - pointerX) * .11;
     pointerY += (pointerTargetY - pointerY) * .11;
     pointerStrength += (pointerStrengthTarget - pointerStrength) * .08;
     const scrollPhase = waveScroll * .00135;
-    const centreX = waveWidth * .5;
-    const centreY = waveHeight * .42;
-    const points = Array.from({ length: rows }, (_, row) =>
-      Array.from({ length: columns }, (_, column) => {
-        const baseX = (column - 4) * spacing;
-        const baseY = (row - 4) * spacing;
-        const nx = baseX / Math.max(waveWidth, 1);
-        const ny = baseY / Math.max(waveHeight, 1);
-        const ridgeOne = Math.exp(-(((nx - .24 - Math.sin(scrollPhase) * .12) ** 2) / .026 + ((ny - .27) ** 2) / .09));
-        const ridgeTwo = Math.exp(-(((nx - .76) ** 2) / .055 + ((ny - .72 + Math.cos(scrollPhase * .8) * .16) ** 2) / .045));
-        const valley = Math.exp(-(((nx - .53) ** 2) / .035 + ((ny - .48) ** 2) / .06));
-        const rolling = Math.sin(nx * 8.4 + ny * 3.2 + scrollPhase) * .36
-          + Math.cos(ny * 9.2 - nx * 2.6 - scrollPhase * .7) * .22;
+    const driftTime = reducedMotion ? 0 : time * .00008;
+    const points = backgroundNodes.map((node) => {
+        const nx = node.x + Math.sin(node.phase + driftTime * node.drift * 9) * .009 + Math.sin(scrollPhase + node.cluster) * .025;
+        const ny = node.y + Math.cos(node.phase * 1.3 + driftTime * node.drift * 7) * .012 + Math.cos(scrollPhase * .7 + node.cluster) * .035;
         const pointerDx = nx - pointerX;
         const pointerDy = ny - pointerY;
         const pointerDistance = Math.hypot(pointerDx, pointerDy);
-        const repulseRadius = waveWidth < 700 ? .24 : .19;
+        const repulseRadius = waveWidth < 700 ? .28 : .2;
         const repulseRatio = Math.max(0, 1 - pointerDistance / repulseRadius);
         const repulseForce = repulseRatio * repulseRatio * pointerStrength;
-        const repulseX = pointerDistance ? (pointerDx / pointerDistance) * repulseForce * 68 : 0;
-        const repulseY = pointerDistance ? (pointerDy / pointerDistance) * repulseForce * 68 : 0;
-        const depth = ridgeOne * 1.35 + ridgeTwo * .95 - valley * .78 + rolling - repulseForce * .16;
-        const perspective = 1 + depth * .17;
-        const skew = depth * 28;
+        const repulseX = pointerDistance ? (pointerDx / pointerDistance) * repulseForce * 72 : 0;
+        const repulseY = pointerDistance ? (pointerDy / pointerDistance) * repulseForce * 72 : 0;
         return {
-          x: centreX + (baseX - centreX) * perspective + skew + repulseX,
-          y: centreY + (baseY - centreY) * perspective - depth * 54 + repulseY,
-          depth
+          ...node,
+          x: nx * waveWidth + repulseX,
+          y: ny * waveHeight + repulseY
         };
-      })
-    );
+      });
 
     waveContext.clearRect(0, 0, waveWidth, waveHeight);
-    waveContext.lineWidth = .75;
-    waveContext.strokeStyle = "rgba(220, 231, 227, .2)";
+    waveContext.lineWidth = .65;
+    points.forEach((point, index) => {
+      points.slice(index + 1).forEach((neighbor) => {
+        if (point.cluster !== neighbor.cluster) return;
+        const distance = Math.hypot(point.x - neighbor.x, point.y - neighbor.y);
+        if (distance > 86) return;
+        waveContext.strokeStyle = `rgba(220, 231, 227, ${(1 - distance / 86) * .12})`;
+        waveContext.beginPath();
+        waveContext.moveTo(point.x, point.y);
+        waveContext.lineTo(neighbor.x, neighbor.y);
+        waveContext.stroke();
+      });
+    });
 
-    const drawLine = (linePoints) => {
+    points.forEach((point) => {
+      waveContext.fillStyle = `rgba(241, 247, 243, ${point.opacity})`;
       waveContext.beginPath();
-      linePoints.forEach((point, index) => index ? waveContext.lineTo(point.x, point.y) : waveContext.moveTo(point.x, point.y));
-      waveContext.stroke();
-    };
-
-    points.forEach(drawLine);
-    for (let column = 0; column < columns; column += 1) drawLine(points.map((row) => row[column]));
-
-    points.flat().forEach((point) => {
-      const prominence = Math.max(0, Math.min(1, (point.depth + .7) / 2));
-      waveContext.fillStyle = `rgba(241, 247, 243, ${.3 + prominence * .42})`;
-      waveContext.beginPath();
-      waveContext.arc(point.x, point.y, .8 + prominence * 1.05, 0, Math.PI * 2);
+      waveContext.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
       waveContext.fill();
     });
 
