@@ -70,7 +70,9 @@ img { max-width: 100%; }
 }
 .header-inner { height: 96px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
 .wordmark { display: inline-flex; align-items: center; gap: 12px; width: max-content; font-weight: 700; }
-.wordmark-mark { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: rgba(255,255,255,.05); color: var(--acid); font: 500 10px "DM Mono", monospace; box-shadow: inset 0 0 20px rgba(201,244,109,.05); }
+.wordmark-mark { width: 42px; height: 42px; display: grid; place-items: center; color: var(--acid); }
+.wordmark-mark svg { width: 100%; height: 100%; overflow: visible; }
+.wordmark-mark .logo-moon { fill: currentColor; }
 .site-header nav { display: flex; gap: 34px; }
 .site-header nav a { font-size: 13px; font-weight: 600; }
 .site-header nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
