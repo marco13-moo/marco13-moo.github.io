@@ -223,7 +223,6 @@ img { max-width: 100%; }
 .socials { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 55px; }
 .socials a { min-height: 42px; padding: 10px 14px; display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.035); font: 500 10px "DM Mono", monospace; text-transform: uppercase; transition: color .2s, background .2s, border-color .2s, transform .2s; }
 .socials img { width: 15px; height: 15px; object-fit: contain; filter: brightness(0) saturate(100%) invert(100%); }
-.socials a span { margin-left: 2px; color: var(--orange); }
 .socials a:hover { border-color: rgba(201,244,109,.55); background: rgba(201,244,109,.1); color: var(--white); transform: translateY(-2px); }
 .contact-form { padding: 36px; background: rgba(255,255,255,.045); border: 1px solid var(--line); backdrop-filter: blur(20px); box-shadow: 0 32px 100px rgba(0,0,0,.32); }
 .form-heading { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 20px; border-bottom: 1px solid var(--line); font: 600 18px "Syne", sans-serif; }
