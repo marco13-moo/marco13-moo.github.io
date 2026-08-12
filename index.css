@@ -154,7 +154,7 @@ img { max-width: 100%; }
 .project-link { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; font-size: 20px; transition: .2s; }
 .project-link:hover { background: var(--acid); color: #0a0d0b; border-color: var(--acid); transform: rotate(45deg); }
 
-.signal { position: relative; background: rgba(0,0,0,.88); border-block: 1px solid var(--line); backdrop-filter: blur(12px); }
+.signal { position: relative; background: transparent; border-block: 1px solid var(--line); }
 .metrics-console { overflow: hidden; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: linear-gradient(145deg, rgba(18,21,28,.92), rgba(5,6,9,.96)); box-shadow: 0 40px 120px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.06); }
 .console-bar { min-height: 58px; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); color: var(--muted); font: 500 9px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
 .console-bar > div, .console-bar p { display: flex; align-items: center; gap: 10px; margin: 0; }
