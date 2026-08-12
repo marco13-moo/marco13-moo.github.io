@@ -1,5 +1,76 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const waveCanvas = document.querySelector(".wave-grid");
+
+if (waveCanvas) {
+  const waveContext = waveCanvas.getContext("2d");
+  let waveFrame;
+  let waveWidth = 0;
+  let waveHeight = 0;
+  let waveRatio = 1;
+
+  const resizeWaveGrid = () => {
+    waveRatio = Math.min(window.devicePixelRatio || 1, 2);
+    waveWidth = window.innerWidth;
+    waveHeight = window.innerHeight;
+    waveCanvas.width = Math.round(waveWidth * waveRatio);
+    waveCanvas.height = Math.round(waveHeight * waveRatio);
+    waveContext.setTransform(waveRatio, 0, 0, waveRatio, 0, 0);
+  };
+
+  const drawWaveGrid = (time = 0) => {
+    const spacing = waveWidth < 700 ? 54 : 68;
+    const columns = Math.ceil(waveWidth / spacing) + 3;
+    const rows = Math.ceil(waveHeight / spacing) + 4;
+    const phase = reducedMotion ? 0 : time * .00016;
+    const points = Array.from({ length: rows }, (_, row) =>
+      Array.from({ length: columns }, (_, column) => {
+        const baseX = (column - 1) * spacing;
+        const baseY = (row - 1) * spacing;
+        const waveA = Math.sin(column * .54 + row * .32 + phase * 4.2);
+        const waveB = Math.cos(column * .25 - row * .48 - phase * 3.1);
+        const depth = Math.sin((baseX / Math.max(waveWidth, 1)) * Math.PI * 2 + phase * 2.4);
+        return {
+          x: baseX + waveB * 10,
+          y: baseY + waveA * 17 + depth * 13
+        };
+      })
+    );
+
+    waveContext.clearRect(0, 0, waveWidth, waveHeight);
+    waveContext.lineWidth = .7;
+    waveContext.strokeStyle = "rgba(220, 231, 227, .18)";
+
+    const drawLine = (linePoints) => {
+      waveContext.beginPath();
+      linePoints.forEach((point, index) => index ? waveContext.lineTo(point.x, point.y) : waveContext.moveTo(point.x, point.y));
+      waveContext.stroke();
+    };
+
+    points.forEach(drawLine);
+    for (let column = 0; column < columns; column += 1) drawLine(points.map((row) => row[column]));
+
+    waveContext.fillStyle = "rgba(241, 247, 243, .52)";
+    points.flat().forEach((point) => {
+      waveContext.beginPath();
+      waveContext.arc(point.x, point.y, 1.25, 0, Math.PI * 2);
+      waveContext.fill();
+    });
+
+    if (!reducedMotion && !document.hidden) waveFrame = requestAnimationFrame(drawWaveGrid);
+  };
+
+  const restartWaveGrid = () => {
+    cancelAnimationFrame(waveFrame);
+    drawWaveGrid(performance.now());
+  };
+
+  resizeWaveGrid();
+  drawWaveGrid();
+  window.addEventListener("resize", () => { resizeWaveGrid(); restartWaveGrid(); }, { passive: true });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) restartWaveGrid(); });
+}
+
 if (!reducedMotion) {
   const observer = new IntersectionObserver(
     (entries) => {
