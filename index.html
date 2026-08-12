@@ -39,14 +39,7 @@
         <a href="#capabilities">Capabilities</a>
       </nav>
       <a class="header-cta" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
     </div>
-    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" hidden>
-      <a href="#work">Work</a>
-      <a href="#signal">GitHub signal</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#contact">Let’s talk</a>
-    </nav>
   </header>
 
   <main id="main">
@@ -91,8 +84,14 @@
         <p>Automation, security and engineering analytics—designed as working systems, not portfolio concepts.</p>
       </header>
 
-      <div class="project-list">
-        <article class="project reveal">
+      <div class="project-folder reveal" data-project-folder>
+        <div class="folder-tabs" role="tablist" aria-label="Selected projects">
+          <button class="folder-tab is-active" type="button" role="tab" id="project-tab-1" aria-selected="true" aria-controls="project-panel-1" data-project-tab="0"><span>01</span>GitHub Metrics</button>
+          <button class="folder-tab" type="button" role="tab" id="project-tab-2" aria-selected="false" aria-controls="project-panel-2" data-project-tab="1"><span>02</span>Vulnerability Automation</button>
+          <button class="folder-tab" type="button" role="tab" id="project-tab-3" aria-selected="false" aria-controls="project-panel-3" data-project-tab="2"><span>03</span>Daily Dose of DevOps</button>
+        </div>
+        <div class="folder-body">
+        <article class="project is-active" role="tabpanel" id="project-panel-1" aria-labelledby="project-tab-1" data-project-panel="0">
           <div class="project-index">01</div>
           <div class="project-copy">
             <p class="project-type">Engineering analytics · CI/CD</p>
@@ -105,7 +104,7 @@
           <a class="project-link" href="https://github.com/marco13-moo/github-dashboard" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub Metrics Dashboard repository">↗</a>
         </article>
 
-        <article class="project reveal">
+        <article class="project" role="tabpanel" id="project-panel-2" aria-labelledby="project-tab-2" data-project-panel="1" hidden>
           <div class="project-index">02</div>
           <div class="project-copy">
             <p class="project-type">Security automation · DevSecOps</p>
@@ -118,7 +117,7 @@
           <a class="project-link" href="https://github.com/marco13-moo/devsecops-vulnerability-automation" target="_blank" rel="noopener noreferrer" aria-label="Open DevSecOps Vulnerability Automation repository">↗</a>
         </article>
 
-        <article class="project reveal">
+        <article class="project" role="tabpanel" id="project-panel-3" aria-labelledby="project-tab-3" data-project-panel="2" hidden>
           <div class="project-index">03</div>
           <div class="project-copy">
             <p class="project-type">AI workflow · Publishing</p>
@@ -130,6 +129,7 @@
           </ul>
           <a class="project-link" href="https://github.com/marco13-moo/daily-dose-of-devops" target="_blank" rel="noopener noreferrer" aria-label="Open Daily Dose of DevOps repository">↗</a>
         </article>
+        </div>
       </div>
     </section>
 
@@ -191,7 +191,7 @@
       <div class="capability-grid">
         <article class="capability reveal"><span>01</span><h3>Cloud</h3><div class="tech-list"><span><img src="https://api.iconify.design/logos:aws.svg" alt="">AWS</span><span><img src="https://api.iconify.design/logos:microsoft-azure.svg" alt="">Azure</span><span><img src="https://api.iconify.design/carbon:ibm-cloud.svg" alt="">IBM Cloud</span></div></article>
         <article class="capability reveal"><span>02</span><h3>CI/CD</h3><div class="tech-list"><span><img src="https://api.iconify.design/simple-icons:githubactions.svg" alt="">GitHub Actions</span><span><img src="https://api.iconify.design/simple-icons:jenkins.svg" alt="">Jenkins</span><span><img src="https://api.iconify.design/simple-icons:travisci.svg" alt="">Travis</span></div></article>
-        <article class="capability reveal"><span>03</span><h3>Infrastructure as Code</h3><div class="tech-list"><span><img src="https://api.iconify.design/simple-icons:terraform.svg" alt="">Terraform</span><span><img src="https://api.iconify.design/logos:aws-cloudformation.svg" alt="">CloudFormation</span><span><img src="https://api.iconify.design/simple-icons:ansible.svg" alt="">Ansible</span><span><img src="https://api.iconify.design/simple-icons:chef.svg" alt="">Chef</span></div></article>
+        <article class="capability reveal"><span>03</span><h3>Infrastructure as Code</h3><div class="tech-list"><span><img src="https://api.iconify.design/simple-icons:terraform.svg" alt="">Terraform</span><span><img src="https://api.iconify.design/mdi:layers-triple-outline.svg" alt="">CloudFormation</span><span><img src="https://api.iconify.design/simple-icons:ansible.svg" alt="">Ansible</span><span><img src="https://api.iconify.design/simple-icons:chef.svg" alt="">Chef</span></div></article>
         <article class="capability reveal"><span>04</span><h3>Containers</h3><div class="tech-list"><span><img src="https://api.iconify.design/simple-icons:kubernetes.svg" alt="">Kubernetes</span><span><img src="https://api.iconify.design/simple-icons:docker.svg" alt="">Docker</span><span><img src="https://api.iconify.design/simple-icons:redhatopenshift.svg" alt="">RHOV</span></div></article>
         <article class="capability reveal"><span>05</span><h3>Observability</h3><div class="tech-list"><span><img src="https://api.iconify.design/simple-icons:grafana.svg" alt="">Grafana</span><span><img src="https://api.iconify.design/selfhst:nagios.svg" alt="">Nagios</span><span><img src="https://api.iconify.design/simple-icons:splunk.svg" alt="">Splunk</span></div></article>
         <article class="capability reveal"><span>06</span><h3>Automation</h3><div class="tech-list"><span><img src="https://api.iconify.design/simple-icons:python.svg" alt="">Python</span><span><img src="https://api.iconify.design/simple-icons:gnubash.svg" alt="">Bash</span><span><img src="https://api.iconify.design/simple-icons:go.svg" alt="">Go</span><span><img src="https://api.iconify.design/simple-icons:jfrog.svg" alt="">Artifactory</span></div></article>
@@ -239,6 +239,6 @@
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
-  <script src="index.js"></script>
+  <script src="index.js?v=folder-preview-2"></script>
 </body>
 </html>

@@ -19,25 +19,62 @@ if (!reducedMotion) {
   document.querySelectorAll(".reveal").forEach((element) => element.classList.add("visible"));
 }
 
-const menuButton = document.querySelector(".menu-toggle");
-const mobileMenu = document.querySelector(".mobile-menu");
+document.querySelectorAll("[data-project-folder]").forEach((folder) => {
+  const tabs = [...folder.querySelectorAll("[data-project-tab]")];
+  const panels = [...folder.querySelectorAll("[data-project-panel]")];
+  let activeIndex = 0;
+  let rotationTimer;
+  let isPaused = false;
 
-if (menuButton && mobileMenu) {
-  menuButton.addEventListener("click", () => {
-    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", String(!isOpen));
-    mobileMenu.hidden = isOpen;
-    mobileMenu.classList.toggle("open", !isOpen);
-  });
+  const scheduleRotation = () => {
+    window.clearTimeout(rotationTimer);
+    if (isPaused || reducedMotion || document.hidden) return;
+    rotationTimer = window.setTimeout(() => {
+      activateProject((activeIndex + 1) % tabs.length);
+      scheduleRotation();
+    }, 60000);
+  };
 
-  mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menuButton.setAttribute("aria-expanded", "false");
-      mobileMenu.hidden = true;
-      mobileMenu.classList.remove("open");
+  const activateProject = (index, moveFocus = false) => {
+    activeIndex = index;
+    tabs.forEach((tab, tabIndex) => {
+      const isActive = tabIndex === index;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+      if (isActive && moveFocus) tab.focus();
+    });
+    panels.forEach((panel, panelIndex) => {
+      panel.hidden = panelIndex !== index;
+      panel.classList.toggle("is-active", panelIndex === index);
+    });
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("pointerenter", () => activateProject(index));
+    tab.addEventListener("focus", () => activateProject(index));
+    tab.addEventListener("click", () => { activateProject(index); scheduleRotation(); });
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (activeIndex + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+      activateProject(nextIndex, true);
     });
   });
-}
+
+  folder.addEventListener("pointerenter", () => { isPaused = true; window.clearTimeout(rotationTimer); });
+  folder.addEventListener("pointerleave", () => { isPaused = false; scheduleRotation(); });
+  folder.addEventListener("focusin", () => { isPaused = true; window.clearTimeout(rotationTimer); });
+  folder.addEventListener("focusout", (event) => {
+    if (folder.contains(event.relatedTarget)) return;
+    isPaused = false;
+    scheduleRotation();
+  });
+  document.addEventListener("visibilitychange", scheduleRotation);
+
+  activateProject(0);
+  scheduleRotation();
+});
 
 const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
