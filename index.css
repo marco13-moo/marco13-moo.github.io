@@ -184,7 +184,7 @@ img { max-width: 100%; }
 .streak-visual span:nth-child(4n) { background: rgba(101,217,211,.42); animation-delay: -1.6s; }
 .streak-visual span:nth-child(5n) { background: rgba(201,244,109,.28); animation-delay: -2.4s; }
 @keyframes cell-pulse { 50% { opacity: .45; transform: translateY(-2px); } }
-.language-metric { grid-column: 2 / 4; min-height: 210px; }
+.language-metric { grid-column: 1 / -1; min-height: 210px; }
 .language-heading { display: flex; justify-content: space-between; gap: 20px; }
 .language-heading small { margin: 0; }
 .language-heading small strong { color: var(--ink); font-size: inherit; }
