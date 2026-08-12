@@ -125,6 +125,7 @@ img { max-width: 100%; }
 
 .section { padding: clamp(120px, 13vw, 180px) 0; }
 .section-heading { display: grid; grid-template-columns: .8fr 1.25fr .75fr; gap: clamp(44px, 7vw, 100px); align-items: end; margin-bottom: clamp(68px, 8vw, 110px); }
+.section-heading.section-heading-tight { grid-template-columns: .55fr 1.2fr 1fr; gap: clamp(28px, 3.5vw, 60px); }
 .section-heading .eyebrow { align-self: start; color: var(--muted); }
 .section-heading h2, .contact h2 { font-size: clamp(3rem, 6.2vw, 6.3rem); line-height: .9; }
 .section-heading > p:last-child { margin: 0 0 5px; color: var(--muted); font-size: 14px; }
@@ -238,6 +239,7 @@ img { max-width: 100%; }
   .hero-sidebar { width: 100%; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
   .hero-sidebar > .eyebrow { grid-column: 1 / -1; }
   .section-heading { grid-template-columns: 1fr 1fr; gap: 35px; }
+  .section-heading.section-heading-tight { grid-template-columns: 1fr 1fr; gap: 35px; }
   .section-heading .eyebrow { grid-column: 1 / -1; }
   .project { grid-template-columns: 50px 1fr 48px; }
   .project-tags { display: none; }
@@ -257,6 +259,7 @@ img { max-width: 100%; }
   .hero-sidebar > .eyebrow { grid-column: auto; }
   .section { padding: 95px 0; }
   .section-heading { grid-template-columns: 1fr; margin-bottom: 50px; }
+  .section-heading.section-heading-tight { grid-template-columns: 1fr; }
   .section-heading .eyebrow { grid-column: auto; }
   .project { grid-template-columns: 1fr 44px; gap: 20px; padding: 34px 14px; }
   .project-index { grid-column: 1 / -1; }
