@@ -78,8 +78,6 @@ img { max-width: 100%; }
 .header-cta:hover { background: var(--acid); color: #0a0d0b; border-color: var(--acid); }
 
 .hero { min-height: 900px; padding-top: 190px; padding-bottom: 110px; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: clamp(72px, 10vw, 150px); align-items: center; }
-.status { display: flex; gap: 10px; align-items: center; margin: 0 0 32px; color: var(--muted); font: 500 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
-.status span { width: 8px; height: 8px; border-radius: 50%; background: #57a35a; box-shadow: 0 0 0 5px rgba(87,163,90,.12); }
 .hero h1, .section-heading h2, .contact h2 {
   margin: 0;
   font: 700 clamp(4.4rem, 8.5vw, 8.3rem)/.82 "Syne", sans-serif;
