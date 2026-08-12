@@ -119,9 +119,10 @@ img { max-width: 100%; }
 .focus span { display: block; padding: 5px 0; font-size: 12px; font-weight: 600; }
 
 .ticker { overflow: hidden; border-block: 1px solid var(--line); background: rgba(13,16,24,.72); backdrop-filter: blur(12px); color: #d4d9d5; }
-.ticker div { width: max-content; padding: 16px 0; font: 600 12px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .05em; animation: drift 28s linear infinite; }
+.ticker-track { display: flex; width: max-content; animation: drift 28s linear infinite; }
+.ticker-track > span { flex: none; padding: 16px 0; font: 600 12px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .05em; }
 .ticker i { margin: 0 25px; color: var(--orange); font-style: normal; font-size: 8px; }
-@keyframes drift { from { transform: translateX(3vw); } to { transform: translateX(-25vw); } }
+@keyframes drift { to { transform: translateX(-50%); } }
 
 .section { padding: clamp(120px, 13vw, 180px) 0; }
 .section-heading { display: grid; grid-template-columns: .8fr 1.25fr .75fr; gap: clamp(44px, 7vw, 100px); align-items: end; margin-bottom: clamp(68px, 8vw, 110px); }
