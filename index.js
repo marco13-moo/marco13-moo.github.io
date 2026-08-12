@@ -10,6 +10,12 @@ if (waveCanvas) {
   let waveRatio = 1;
   let waveScroll = window.scrollY;
   let waveScrollTarget = window.scrollY;
+  let pointerX = .5;
+  let pointerY = .45;
+  let pointerTargetX = .5;
+  let pointerTargetY = .45;
+  let pointerStrength = 0;
+  let pointerStrengthTarget = 0;
 
   const resizeWaveGrid = () => {
     waveRatio = Math.min(window.devicePixelRatio || 1, 2);
@@ -24,8 +30,10 @@ if (waveCanvas) {
     const spacing = waveWidth < 700 ? 48 : 58;
     const columns = Math.ceil(waveWidth / spacing) + 8;
     const rows = Math.ceil(waveHeight / spacing) + 10;
-    const phase = reducedMotion ? 0 : time * .00016;
     waveScroll += (waveScrollTarget - waveScroll) * (reducedMotion ? 1 : .055);
+    pointerX += (pointerTargetX - pointerX) * .11;
+    pointerY += (pointerTargetY - pointerY) * .11;
+    pointerStrength += (pointerStrengthTarget - pointerStrength) * .08;
     const scrollPhase = waveScroll * .00135;
     const centreX = waveWidth * .5;
     const centreY = waveHeight * .42;
@@ -38,9 +46,13 @@ if (waveCanvas) {
         const ridgeOne = Math.exp(-(((nx - .24 - Math.sin(scrollPhase) * .12) ** 2) / .026 + ((ny - .27) ** 2) / .09));
         const ridgeTwo = Math.exp(-(((nx - .76) ** 2) / .055 + ((ny - .72 + Math.cos(scrollPhase * .8) * .16) ** 2) / .045));
         const valley = Math.exp(-(((nx - .53) ** 2) / .035 + ((ny - .48) ** 2) / .06));
-        const rolling = Math.sin(nx * 8.4 + ny * 3.2 + phase * 3.1 + scrollPhase) * .36
-          + Math.cos(ny * 9.2 - nx * 2.6 - phase * 2.2 - scrollPhase * .7) * .22;
-        const depth = ridgeOne * 1.35 + ridgeTwo * .95 - valley * .78 + rolling;
+        const rolling = Math.sin(nx * 8.4 + ny * 3.2 + scrollPhase) * .36
+          + Math.cos(ny * 9.2 - nx * 2.6 - scrollPhase * .7) * .22;
+        const pointerDistance = Math.hypot(nx - pointerX, ny - pointerY);
+        const pointerFalloff = Math.exp(-(pointerDistance * pointerDistance) / .032);
+        const pointerRipple = Math.cos(pointerDistance * 34 - time * .0055) * pointerFalloff * pointerStrength;
+        const disturbance = (pointerFalloff * .72 + pointerRipple * .62) * pointerStrength;
+        const depth = ridgeOne * 1.35 + ridgeTwo * .95 - valley * .78 + rolling + disturbance;
         const perspective = 1 + depth * .17;
         const skew = depth * 28;
         return {
@@ -83,6 +95,12 @@ if (waveCanvas) {
   resizeWaveGrid();
   drawWaveGrid();
   window.addEventListener("scroll", () => { waveScrollTarget = window.scrollY; }, { passive: true });
+  window.addEventListener("pointermove", (event) => {
+    pointerTargetX = event.clientX / Math.max(window.innerWidth, 1);
+    pointerTargetY = event.clientY / Math.max(window.innerHeight, 1);
+    pointerStrengthTarget = 1;
+  }, { passive: true });
+  document.documentElement.addEventListener("pointerleave", () => { pointerStrengthTarget = 0; }, { passive: true });
   window.addEventListener("resize", () => { resizeWaveGrid(); restartWaveGrid(); }, { passive: true });
   document.addEventListener("visibilitychange", () => { if (!document.hidden) restartWaveGrid(); });
 }
