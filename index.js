@@ -223,20 +223,31 @@ if (metricsConsole) {
     if (match && element) element.textContent = match[1];
   };
 
-  fetch(metricsConsole.dataset.metricsSource)
-    .then((response) => {
-      if (!response.ok) throw new Error("Metrics unavailable");
-      return response.text();
-    })
-    .then((metrics) => {
-      updateMetric("#metric-streak", /Current streak ([\d,]+) days/, metrics);
+  const fetchSource = (url) => fetch(url).then((response) => {
+    if (!response.ok) throw new Error(`Metrics unavailable: ${url}`);
+    return response.text();
+  });
+
+  const liveMetrics = fetchSource(metricsConsole.dataset.metricsSource).then((metrics) => {
       updateMetric("#metric-repositories", /Contributed to ([\d,]+) repositories/, metrics);
       updateMetric("#metric-highest", /Highest in a day at ([\d,]+)/, metrics);
       updateMetric("#metric-average", /Average per day at ~([\d.]+)/, metrics);
       updateMetric("#metric-languages", /(\d+) Languages/, metrics);
-      if (status) status.textContent = "Synced live";
-    })
-    .catch(() => {
-      if (status) status.textContent = "Latest snapshot";
     });
+
+  // The dedicated streak provider traverses the complete contribution history;
+  // the isocalendar feed above is deliberately excluded because it is half-year bounded.
+  const streakMetrics = fetchSource(metricsConsole.dataset.streakSource).then((svg) => {
+    const text = new DOMParser().parseFromString(svg, "image/svg+xml").documentElement.textContent.replace(/\s+/g, " ");
+    updateMetric("#metric-total-contributions", /([\d,]+) Total Contributions/, text);
+    updateMetric("#metric-streak", /([\d,]+) Current Streak/, text);
+    updateMetric("#metric-longest-streak", /([\d,]+) Longest Streak/, text);
+  });
+
+  Promise.allSettled([liveMetrics, streakMetrics]).then((results) => {
+    if (!status) return;
+    status.textContent = results.every(({ status: sourceStatus }) => sourceStatus === "fulfilled")
+      ? "Synced sources"
+      : "Latest snapshot";
+  });
 }
