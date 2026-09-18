@@ -125,7 +125,7 @@ img { max-width: 100%; }
 .section-heading.light .eyebrow, .section-heading.light > p:last-child { color: #999e91; }
 
 .project-folder { --folder-accent: rgba(101,217,211,.2); position: relative; padding-top: 78px; filter: drop-shadow(0 35px 70px rgba(0,0,0,.32)); }
-.folder-tabs { position: absolute; inset: 0 0 auto; z-index: 2; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 8px; padding-inline: 20px; }
+.folder-tabs { position: absolute; inset: 0 0 auto; z-index: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; gap: 8px; padding-inline: 20px; }
 .folder-tab { position: relative; min-height: 88px; padding: 16px 22px 28px; overflow: hidden; border: 1px solid var(--line); border-bottom: 0; border-radius: 18px 18px 0 0; background: rgba(13,16,24,.96); color: var(--muted); text-align: left; font: 600 11px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .04em; cursor: pointer; transform: translateY(0); transition: min-height .28s cubic-bezier(.16,1,.3,1), transform .28s cubic-bezier(.16,1,.3,1), color .25s, background .25s, border-color .25s; }
 .folder-tab::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; background: linear-gradient(120deg, rgba(101,217,211,.14), rgba(201,244,109,.06)); transition: opacity .25s; }
 .folder-tab span { display: block; margin-bottom: 4px; color: var(--orange); font-size: 8px; }
